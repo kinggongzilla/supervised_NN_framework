@@ -1,13 +1,20 @@
 import numpy as np
 import nnfs
+
+import torch
+from torchvision import datasets, transforms
+from torch.utils.data.sampler import SubsetRandomSampler
+
 from nnfs.datasets import spiral_data, sine_data
 from Layer import Layer_Dense, Layer_Input, Layer_Dropout
 from Activation import Activation_Linear, Activation_ReLu, Activation_Softmax, Activation_Sigmoid
 from Loss import Loss_BinaryCrossEntropy, Loss_CategoricalCrossEntropy, Loss_MeanSquaredError, Loss_MeanAbsoluteError, Activation_Softmax_Loss_CategoricalCrossentropy
-from Optimizer import Optimizer_Adam, Optimizer_Adagrad, Optimizer_SDG, Optimizer_RMSprop
+from Optimizer import Optimizer_Adam, Optimizer_Adagrad, Optimizer_SGD, Optimizer_RMSprop
 from Accuracy import Accuracy_Categorical, Accuracy_Regression
 from Model import Model
 import matplotlib.pyplot as plt
+
+
 
 nnfs.init()
 
@@ -205,7 +212,7 @@ if __name__ == "__main__":
     # X, y = spiral_data(samples=1000, classes=3)
     # X_test, y_test = spiral_data(samples=100, classes=3)
     #
-    # # optimizer = Optimizer_SDG(decay=1e-3,momentum=0.9)
+    # # optimizer = Optimizer_SGD(decay=1e-3,momentum=0.9)
     # # optimizer = Optimizer_Adagrad(decay=1e-5)
     # # optimizer = Optimizer_RMSprop(decay=1e-4)
     # optimizer = Optimizer_Adam(learning_rate=0.02, decay=1e-5)

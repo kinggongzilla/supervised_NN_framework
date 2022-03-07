@@ -115,3 +115,8 @@ class Model:
         self.loss.backward(output, y)
         for layer in reversed(self.layers):
             layer.backward(layer.next.dinputs)
+
+    def predict(self, sample):
+        output = self.forward(sample, training=False)
+        prediction = self.layers[-1].predictions(output)
+        return prediction

@@ -1,6 +1,6 @@
 import numpy as np
 
-class Optimizer_SDG:
+class Optimizer_SGD:
     def __init__(self, learning_rate=1.0, decay=0, momentum=0):
         self.learning_rate = learning_rate
         self.current_learning_rate = learning_rate
